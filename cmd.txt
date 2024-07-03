@@ -20,3 +20,6 @@ CREATE TABLE `Motoristas` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `nome` VARCHA
 -- Entregas definition
 
 CREATE TABLE `Entregas` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `tipo` VARCHAR(255) NOT NULL, `valor` FLOAT NOT NULL, `regiao` VARCHAR(255) NOT NULL, `seguro` TINYINT(1) DEFAULT 0, `indicador_valiosa` TINYINT(1) NOT NULL DEFAULT 0, `indicador_perigosa` TINYINT(1) NOT NULL DEFAULT 0, `status` VARCHAR(255) NOT NULL DEFAULT 'pendente', `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `caminhaoId` INTEGER REFERENCES `Caminhoes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE, `motoristaId` INTEGER REFERENCES `Motoristas` (`id`) ON DELETE SET NULL ON UPDATE CASCADE);
+
+
+yarn add helmet xss-clean bcrypt jsonwebtoken express-rate-limit compression csurf dotenv winston 

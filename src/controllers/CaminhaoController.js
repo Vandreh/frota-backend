@@ -5,7 +5,7 @@ const createCaminhao = async (req, res, next) => {
   try {
     const { modelo, placa } = req.body;
     const caminhao = await caminhaoService.createCaminhao({ modelo, placa });
-    res.status(201).json(caminhao);
+    res.status(201).json({caminhao, csrfToken: res.locals.csrfToken});
   } catch (error) {
     next(error);
   }
@@ -14,7 +14,7 @@ const createCaminhao = async (req, res, next) => {
 const getCaminhoes = async (req, res, next) => {
   try {
     const caminhoes = await caminhaoService.getAllCaminhoes();
-    res.status(200).json(caminhoes);
+    res.status(200).json({caminhoes, csrfToken: res.locals.csrfToken});
   } catch (error) {
     next(error);
   }
